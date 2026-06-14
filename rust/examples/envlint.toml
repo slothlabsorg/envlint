@@ -1,0 +1,43 @@
+# envlint schema — declare what your service expects from the environment.
+#
+# Each [vars.NAME] table describes one variable. Run `envlint check` to validate
+# a .env file or the live process environment against this schema.
+
+# Treat variables that appear in the environment but not below as errors.
+strict = false
+
+[vars.PORT]
+type = "port"
+default = "8080"
+description = "HTTP listen port."
+
+[vars.LOG_LEVEL]
+type = "enum"
+values = ["debug", "info", "warn", "error"]
+default = "info"
+
+[vars.DATABASE_URL]
+type = "url"
+required = true
+description = "Primary database connection string."
+
+[vars.REQUEST_TIMEOUT]
+type = "duration"
+default = "30s"
+
+[vars.MAX_WORKERS]
+type = "int"
+min = 1
+max = 64
+default = "8"
+
+[vars.ENABLE_TRACING]
+type = "bool"
+default = "false"
+
+[vars.API_KEY]
+type = "string"
+required = true
+secret = true
+pattern = "^sk-[A-Za-z0-9]{16,}$"
+description = "Secret; masked in all output."

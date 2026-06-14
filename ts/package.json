@@ -1,0 +1,51 @@
+{
+  "name": "@slothlabs/envlint",
+  "version": "0.1.0",
+  "description": "Schema-driven validator and linter for environment variables and .env files.",
+  "type": "module",
+  "license": "MIT",
+  "author": "SlothLabs",
+  "homepage": "https://github.com/SlothLabs/envlint#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SlothLabs/envlint.git"
+  },
+  "keywords": [
+    "env",
+    "dotenv",
+    "config",
+    "validation",
+    "devops",
+    "cli"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "envlint": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "examples/envlint.toml"
+  ],
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "node --test test/*.test.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "smol-toml": "^1.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}
