@@ -1,0 +1,31 @@
+name: release-npm
+
+# Publishes the npm package to the public registry when a tag like `npm-v0.1.0`
+# is pushed. One-time setup: add an NPM_TOKEN repository secret (an npm automation
+# token that can publish to the @slothlabs org).
+on:
+  push:
+    tags:
+      - "npm-v*"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    name: npm publish
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ts
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

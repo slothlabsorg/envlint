@@ -1,2 +1,3 @@
 /target
-# Cargo.lock is committed: this crate ships a binary.
+# Cargo.lock is committed (this crate ships a binary) but lives at the
+# repository root now that the root is a Cargo virtual workspace.

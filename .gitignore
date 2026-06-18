@@ -1,2 +1,5 @@
 .DS_Store
 *.log
+
+# Rust workspace build output (workspace root holds the shared target/)
+/target

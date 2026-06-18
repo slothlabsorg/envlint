@@ -53,14 +53,22 @@ second.
 
 ## Install
 
+Straight from git — works today, no registry account required:
+
 ```bash
-cargo install envlint          # CLI + library
+cargo install --git https://github.com/slothlabsorg/envlint envlint   # CLI
+cargo add envlint --git https://github.com/slothlabsorg/envlint        # library
 ```
 
-Or add the library to a Rust project:
+The repository root is a Cargo virtual workspace, so the git dependency
+resolves this `rust/` member crate automatically.
+
+Once a `rust-v*` tag has published the crate to crates.io, the registry forms
+also work:
 
 ```bash
-cargo add envlint
+cargo install envlint          # CLI + library
+cargo add envlint              # library
 ```
 
 ## CLI

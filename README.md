@@ -36,15 +36,62 @@ pattern = "^sk-[A-Za-z0-9]{16,}$"
 
 ## Implementations
 
-| Language   | Path                   | Install                          | Notes                                   |
-|------------|------------------------|----------------------------------|-----------------------------------------|
-| Rust       | [`rust/`](rust/)       | `cargo install envlint`          | Library + CLI binary                    |
-| TypeScript | [`ts/`](ts/)           | `npm i @slothlabs/envlint`       | Library + `envlint` bin, ESM            |
-| Kotlin/JVM | [`kotlin/`](kotlin/)   | `com.slothlabs:envlint`          | Library + CLI `main`                    |
+| Language   | Path                   | Distribution                       | Notes                          |
+|------------|------------------------|------------------------------------|--------------------------------|
+| Rust       | [`rust/`](rust/)       | git dependency / `cargo install`   | Library + CLI binary           |
+| TypeScript | [`ts/`](ts/)           | `@slothlabs/envlint` (npm)         | Library + `envlint` bin, ESM   |
+| Kotlin/JVM | [`kotlin/`](kotlin/)   | JitPack (`com.github.slothlabsorg`)| Library + CLI `main`           |
 
 All three parse the **same `envlint.toml`**, apply identical validation
 semantics, mask secrets as `******`, and use the same CLI exit codes:
 `0` clean · `1` validation errors · `2` usage/IO error.
+
+## Install
+
+### Rust — straight from git (no registry needed)
+
+Add the library to a Cargo project:
+
+```bash
+cargo add envlint --git https://github.com/slothlabsorg/envlint
+```
+
+Or install the CLI binary:
+
+```bash
+cargo install --git https://github.com/slothlabsorg/envlint envlint
+```
+
+The repository root is a Cargo virtual workspace, so the git dependency
+resolves the `rust/` member crate automatically. (A crates.io release —
+`cargo add envlint` / `cargo install envlint` — is wired up behind a `rust-v*`
+tag.)
+
+### Kotlin/JVM — JitPack (no credentials needed)
+
+```kotlin
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io")
+}
+
+dependencies {
+    implementation("com.github.slothlabsorg:envlint:0.1.0")
+}
+```
+
+JitPack builds the `kotlin/` module on first request for a tagged version.
+
+### TypeScript — npm
+
+```bash
+npm i @slothlabs/envlint
+```
+
+(Published to the public npm registry by the `npm-v*` release workflow.)
+
+See [`RELEASING.md`](RELEASING.md) for the tag-driven release workflows and the
+one-time setup each registry needs.
 
 ## Supported types
 

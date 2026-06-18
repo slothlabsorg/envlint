@@ -1,0 +1,11 @@
+# JitPack builds the Kotlin/JVM implementation, which lives in the kotlin/
+# subdirectory. JitPack passes the git tag as $VERSION and -Pversion=<tag>;
+# the build strips a leading "v" (so the tag v0.1.0 produces artifact 0.1.0).
+#
+# Consume it with:
+#   repositories { maven("https://jitpack.io") }
+#   dependencies { implementation("com.github.slothlabsorg:envlint:0.1.0") }
+jdk:
+  - openjdk17
+install:
+  - cd kotlin && ./gradlew publishToMavenLocal -Pversion=$VERSION -x test

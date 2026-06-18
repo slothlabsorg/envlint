@@ -5,10 +5,11 @@
   "type": "module",
   "license": "MIT",
   "author": "SlothLabs",
-  "homepage": "https://github.com/SlothLabs/envlint#readme",
+  "homepage": "https://github.com/slothlabsorg/envlint#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SlothLabs/envlint.git"
+    "url": "git+https://github.com/slothlabsorg/envlint.git",
+    "directory": "ts"
   },
   "keywords": [
     "env",
@@ -29,9 +30,11 @@
     "envlint": "./dist/cli.js"
   },
   "files": [
-    "dist",
-    "examples/envlint.toml"
+    "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=22.6.0"
   },

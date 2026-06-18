@@ -57,17 +57,23 @@ a shell-based job. It is a CI/CD check first, a library second.
 
 ## Install
 
-Add the library to a Gradle (Kotlin DSL) project:
+Add the library to a Gradle (Kotlin DSL) project via JitPack — works today
+with no credentials, built straight from a git tag:
 
 ```kotlin
 repositories {
     mavenCentral()
+    maven("https://jitpack.io")
 }
 
 dependencies {
-    implementation("com.slothlabs:envlint:0.1.0")
+    implementation("com.github.slothlabsorg:envlint:0.1.0")
 }
 ```
+
+A `jvm-v*` tag additionally publishes `com.slothlabs:envlint` to GitHub
+Packages (which requires a GitHub token to resolve). See the repo-root
+[`RELEASING.md`](../RELEASING.md).
 
 ## CLI
 
