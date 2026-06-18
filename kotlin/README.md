@@ -67,7 +67,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.slothlabsorg:envlint:0.1.0")
+    implementation("com.github.slothlabsorg:envlint:v0.1.0")
 }
 ```
 

@@ -4,7 +4,7 @@
 #
 # Consume it with:
 #   repositories { maven("https://jitpack.io") }
-#   dependencies { implementation("com.github.slothlabsorg:envlint:0.1.0") }
+#   dependencies { implementation("com.github.slothlabsorg:envlint:v0.1.0") }
 jdk:
   - openjdk17
 install:
